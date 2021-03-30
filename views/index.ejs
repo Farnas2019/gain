@@ -1,0 +1,121 @@
+<%- include('./partials/header')%>
+
+
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="vizew-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                       
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Archive List Posts Area Start ##### -->
+<div class="vizew-archive-list-posts-area mb-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <!-- Archive Catagory & View Options -->
+                <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
+                    <!-- Catagory -->
+                    <div class="archive-catagory">
+                        <h4><i class="fa fa-list" aria-hidden="true"></i>All Posts</h4>
+                    </div>
+                    <!-- View Options -->
+                </div>
+
+                <!-- Single Post Area -->
+                <%posts.forEach(function(post){%>
+              
+                <div class="single-post-area style-2">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-sm-6">
+                            <!-- Post Thumbnail -->
+                            <div class="post-thumbnail">
+                                <img src="/<%=post.image1%>" alt=""  class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <!-- Post Content -->
+                            <div class="post-content mt-0">
+                                <a href="/post/<%=post._id%>" class="post-cata cata-sm cata-success"><%=post.postT%></a>
+                                <a href="/post/<%=post._id%>" class="post-title mb-2"><%=post.discription%></a>
+                                <a href="/post/<%=post._id%>" class="post-title mb-2"><%=post.spec%></a>
+                                <div class="post-meta d-flex align-items-center mb-2">
+                                    <a href="#" class="post-author"><%=post.postedBy.username%></a>
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    <a href="#" class="post-date"><%=post.createdAt.toDateString()%></a>
+                                </div>
+                                <p class="mb-2"><%=post.postC%></p>
+                                <div class="post-meta d-flex">
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i><%=post.comments.length%></a>
+                                                      
+                                <form action="/like/<%=post._id%>?_method=PUT" method="POST">
+                                  <button style="background: none; border: none;"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> <%=post.likes.length%></button>
+                                </form>
+                                <a href="/post/<%=post._id%>" class="post-cata cata-sm cata-success">View</a>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            
+                <% })%>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="sidebar-area">
+                    <!-- ***** Single Widget ***** -->
+                    <div class="single-widget latest-video-widget mb-50">
+                        <!-- Section Heading -->
+                        <div class="section-heading style-2 mb-30">
+                            <h4>Trending Products</h4>
+                            <h4>A Post Can Only Trend if the likes are More Than 50 </h4>
+                            <div class="line"></div>
+                        </div>
+
+                        
+                        <div class="single-post-area mb-30">
+                           
+                            
+                                
+                               
+                            <%posts.forEach(function(post){%>
+                            <%if(post.likes.length > 5) { %>
+                                                   
+                            <div class="post-thumbnail">
+                                <img src="/<%=post.image1%>" alt="">
+                            </div>
+                                                     <div class="post-content">
+                                <a href="#" class="post-cata cata-sm cata-success"><%=post.postT%></a>
+                                <a href="single-post.html" class="post-title"><%=post.discription%></a>
+                                <div class="post-meta d-flex">
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i><%=post.comments.length%></a>
+                                    <a href="#"><i aria-hidden="true"></i> <%=post.postedBy.username%></a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%=post.likes.length%></a>
+                                </div>
+                            </div>
+                            <% } %>
+                            <% })%>
+                        </div>
+
+                  </div>      
+       </div>
+    
+   
+
+        
+ 
+  <button><a href="/logout">Logout</a></button>
+ 
+ <%- include('./partials/footer')%>
+
+
