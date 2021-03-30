@@ -26,10 +26,7 @@ mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology:true, useCrea
 
 var app = express();
 var folder = path.join(__dirname + "files");
-        if(!fs.existsSync(folder)){
-            fs.mkdirSync(folder);
-        }
-        
+             
         app.use(require("express-session")({
             secret: "This is working Fine",
             resave:false,
