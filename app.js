@@ -15,9 +15,9 @@ const   express   =     require("express"),
         
        
 
-//  var dbUrl = "mongodb+srv://ice669:07066944154@cluster0.oghz8.mongodb.net/i4g?retryWrites=true&w=majority";
+var dbUrl = "mongodb+srv://ice669:07066944154@cluster0.oghz8.mongodb.net/i4g?retryWrites=true&w=majority";
 
-var dbUrl = "mongodb://localhost:27017/i4gc";
+
 mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex: true}).then(function(reqult){
     console.log("Connected With Db");
 }).catch(function(err){
