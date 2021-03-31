@@ -27,7 +27,7 @@
                 <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
                     <!-- Catagory -->
                     <div class="archive-catagory">
-                        <h4><i class="fa fa-list" aria-hidden="true"></i>All Posts</h4>
+                        <h4><i class="aria-hidden="true"></i>All Posts</h4>
                     </div>
                     <!-- View Options -->
                 </div>
@@ -47,8 +47,8 @@
                             <!-- Post Content -->
                             <div class="post-content mt-0">
                                 <a href="/post/<%=post._id%>" class="post-cata cata-sm cata-success"><%=post.postT%></a>
-                                <a href="/post/<%=post._id%>" class="post-title mb-2"><%=post.discription%></a>
-                                <a href="/post/<%=post._id%>" class="post-title mb-2"><%=post.spec%></a>
+                                <a href="/post/<%=post._id%>" class="post-title mb-2"><p style="color: black; text-align:justify;"><%=post.discription.substring(0, 200) + "...... Read More"%></p></a>
+                                <a href="/post/<%=post._id%>" class="post-title mb-2"><h6><%=post.spec%></h6></a>
                                 <div class="post-meta d-flex align-items-center mb-2">
                                     <a href="#" class="post-author"><%=post.postedBy.username%></a>
                                     <i class="fa fa-circle" aria-hidden="true"></i>
@@ -89,7 +89,7 @@
                                 
                                
                             <%posts.forEach(function(post){%>
-                            <%if(post.likes.length > 5) { %>
+                            <%if(post.likes.length > 10) { %>
                                                    
                             <div class="post-thumbnail">
                                 <img src="/<%=post.image1%>" alt="">

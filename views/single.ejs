@@ -23,12 +23,12 @@
 
                         <!-- Post Content -->
                         <div class="post-content mt-0">
-                            <a href="#" class="post-cata cata-sm cata-danger"> <%= spost.postT%></a>
-                            <a href="single-post.html" class="post-title mb-2"> <%=spost.postC%></a>
+                            <a href="#" class="post-cata cata-sm cata-danger"><%= spost.postT%></a>
+                            <a href="#" class="post-title mb-2"><h6><%=spost.postC%></h6></a>
 
                             <div class="d-flex justify-content-between mb-30">
                                 <div class="post-meta d-flex align-items-center">
-                                    <a href="#" class="post-author">hfhjhgjh</a>
+                                    <a href="#" class="post-author"></a>
                                     <i class="fa fa-circle" aria-hidden="true"></i>
                                     <a href="#" class="post-date"><%=spost.createdAt.toDateString()%></a>
                                 </div>
@@ -131,7 +131,11 @@
 
                     <!-- ***** Single Widget ***** -->
                     <div class="single-widget share-post-widget mb-50">
-                        <img class="author-avatar" src="/<%=spost.vid%>" alt="">
+                        Click To Play This Video
+                        <a class="video-popup" href="/<%=spost.vid%>" title="Virtual Tour">
+                            <img src="/<%=spost.image1%>" class="author-avatar"  >            
+                        </a>
+                        <img class="author-avatar" src="" alt="">
                     </div>
                     <div class="single-widget share-post-widget mb-50">
                         <img class="author-avatar" src="/<%=spost.image1%>" alt="">

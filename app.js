@@ -15,9 +15,9 @@ const   express   =     require("express"),
         
        
 
-var dbUrl = "mongodb+srv://ice669:07066944154@cluster0.oghz8.mongodb.net/i4g?retryWrites=true&w=majority";
+//  var dbUrl = "mongodb+srv://ice669:07066944154@cluster0.oghz8.mongodb.net/i4g?retryWrites=true&w=majority";
 
-// var dbUrl = "mongodb://localhost:27017/i4gc";
+var dbUrl = "mongodb://localhost:27017/i4gc";
 mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex: true}).then(function(reqult){
     console.log("Connected With Db");
 }).catch(function(err){
@@ -48,6 +48,14 @@ app.use(function(req,res,next){
    res.locals.currentUser = req.user;
     next();
 });
+function truncateString(str, num, next) {
+    if (str.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
+    }
+    next();
+  };
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
      next();
@@ -70,9 +78,10 @@ app.get("/login", function(req,res){
 app.get("/register", function(req,res){
     res.render("register");
 })
-app.get("/", function(req,res){
-    Post.find({}).populate("postedBy","likes").populate("comments.postedBy").sort("-likes").exec().then(function(result){
-           res.render("index", {posts: result});
+app.get("/", async  function(req,res){
+    await Post.find({}).populate("postedBy","likes").populate("comments.postedBy").sort("-likes").exec().then(function(result){
+             
+    res.render("index", {posts: result});
     }).catch(function(err){
         console.log(err);
     })
